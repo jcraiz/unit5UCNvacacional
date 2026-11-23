@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tarea 5: Presentación en Google Slides</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f3f6fb;--surface:#fff;--ink:#14213d;--muted:#52607a;--line:#d5deec;
+  --brand:#1d4ed8;--brand-ink:#fff;--mark:#ffd23f;--mark-ink:#14213d;--ok:#0f7b4b;--bad:#c0392b;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1526;--surface:#16213a;--ink:#eaf0fb;--muted:#a3b1cc;--line:#2c3b5c;--brand:#7aa2ff;--brand-ink:#0d1526;--ok:#5fd6a1;--bad:#ff8f80}}
+:root[data-theme="dark"]{
+  --bg:#0d1526;--surface:#16213a;--ink:#eaf0fb;--muted:#a3b1cc;--line:#2c3b5c;--brand:#7aa2ff;--brand-ink:#0d1526;--ok:#5fd6a1;--bad:#ff8f80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Public Sans",system-ui,sans-serif}
+main{max-width:780px;margin:0 auto;padding:20px 18px 64px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.hero{padding:34px 0 26px}
+.hero .logo{display:block;height:auto;max-height:64px;width:auto;margin:0 0 16px;object-fit:contain;object-position:left;background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;box-shadow:0 1px 3px rgba(20,33,61,.15)}
+.course{color:var(--muted);font-size:.95rem;margin:0 0 12px}
+h1{font-size:clamp(2.1rem,7vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 58%,var(--mark) 58%);padding:0 .1em}
+.lead{font-size:1.1rem;color:var(--muted);max-width:60ch;margin:14px 0 20px}
+.deadline{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;background:var(--ink);color:var(--bg);border-radius:14px;padding:16px 20px}
+.deadline strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.25rem}
+.deadline small{display:block;opacity:.8}
+#count{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.25rem;background:var(--mark);color:var(--mark-ink);padding:6px 14px;border-radius:999px}
+.note{border-left:5px solid var(--mark);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:16px 0;font-size:.95rem}
+.progress{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;margin:6px 0 8px}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.progress p{margin:6px 0 0;font-size:.9rem;color:var(--muted)}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;margin:16px 0;display:grid;grid-template-columns:44px 1fr;gap:4px 16px}
+.n{grid-row:span 3;width:44px;height:44px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font:800 1.3rem "Bricolage Grotesque",sans-serif;display:grid;place-items:center}
+.step h2{font-size:1.45rem}
+.step>*:not(.n):not(h2){grid-column:2}
+.step p{margin:.4rem 0}.step ul{margin:.4rem 0;padding-left:1.2rem}.step li{margin:.25rem 0}
+.done{grid-column:2;margin-top:10px;display:flex;gap:10px;align-items:center;font-weight:600;cursor:pointer}
+.done input{width:22px;height:22px;accent-color:var(--ok)}
+.emph{background:var(--mark);color:var(--mark-ink);padding:2px 8px;border-radius:6px;font-weight:600}
+label{display:block;font-weight:600;margin:12px 0 4px}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+.btn{font:600 1rem "Public Sans",sans-serif;background:var(--brand);color:var(--brand-ink);border:0;border-radius:10px;padding:10px 16px;cursor:pointer;margin-top:10px;text-decoration:none;display:inline-block}
+.prompt{white-space:pre-wrap;background:var(--bg);border:1px dashed var(--brand);border-radius:10px;padding:12px;font-size:.95rem;margin-top:12px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.tools a{display:block;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:600}
+.tools a span{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tabs button,.units label{font:600 .95rem "Public Sans",sans-serif;border:2px solid var(--brand);background:transparent;color:var(--brand);border-radius:999px;padding:7px 16px;cursor:pointer;margin:0}
+.tabs button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink)}
+.units{display:flex;gap:10px;margin:8px 0}
+.units input{position:absolute;opacity:0}
+.units label{display:inline-block}
+.units input:checked+span{background:var(--brand);color:var(--brand-ink)}
+.units label:has(input:checked){background:var(--brand);color:var(--brand-ink)}
+.units label:has(input:focus-visible){outline:3px solid var(--brand);outline-offset:2px}
+.slide{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--bg)}
+.slide h3{font-size:1.05rem;margin-bottom:4px}
+.slide q{display:block;font-style:italic}
+.slide small{display:block;color:var(--muted);margin-top:4px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Bricolage Grotesque",sans-serif}
+.warn{background:var(--mark);color:var(--mark-ink);border:3px solid var(--bad);border-radius:12px;padding:14px 16px;margin:16px 0;font-weight:500}
+.warn b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;display:block;margin-bottom:4px}
+footer{color:var(--muted);font-size:.9rem;margin-top:30px}
+@media (max-width:520px){.step{grid-template-columns:1fr}.n{grid-row:auto}.step>*:not(.n){grid-column:1}.done{grid-column:1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <img class="logo" src="data:image/png;base64,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" alt="Logo">
+  <p class="course">UCN.edu.co · Curso Intensivo de Inglés Vacacional · Tarea 5</p>
+  <h1>Mi vida en <span>5 diapositivas</span></h1>
+  <p class="lead">Vas a crear una presentación corta en Google Slides sobre ti, con fotos reales tuyas y con la gramática y el vocabulario de la Unidad 5 o de la Unidad 6.</p>
+  <div class="deadline">
+    <div><strong>Fecha límite</strong><small>18 de diciembre de 2026, 11:55 p. m. (hora de Colombia)</small></div>
+    <div id="count" aria-live="polite">Calculando…</div>
+  </div>
+  <div class="warn" role="alert"><b>Solo entregas el enlace, y debe ser público</b>Tu presentación de Google Slides debe estar compartida con <u>Cualquier persona con el enlace</u>. Si tu profesor no puede abrirla, la tarea se considerará <u>NO PRESENTADA</u>.</div>
+  <div class="note"><b>Importante:</b> esta presentación se va a reutilizar en la Tarea 6. Guárdala bien y no la borres.</div>
+</header>
+
+<div class="progress" aria-label="Tu progreso">
+  <div class="bar"><i id="barfill"></i></div>
+  <p id="ptext">0 de 5 pasos completados</p>
+</div>
+
+<section class="step">
+  <div class="n">1</div>
+  <h2>Elige la unidad, la gramática y el vocabulario</h2>
+  <p>Escoge <b>una sola unidad</b>: la 5 o la 6. Revisa su contenido y selecciona las estructuras gramaticales y el vocabulario clave que vas a usar.</p>
+  <div class="units" role="radiogroup" aria-label="Unidad">
+    <label><input type="radio" name="unit" value="5" checked>Unidad 5</label>
+    <label><input type="radio" name="unit" value="6">Unidad 6</label>
+  </div>
+  <label for="gram">Estructuras gramaticales (una por línea)</label>
+  <textarea id="gram" placeholder="Ejemplo: past simple&#10;there is / there are"></textarea>
+  <label for="vocab">Vocabulario clave (separado por comas)</label>
+  <textarea id="vocab" placeholder="Ejemplo: neighborhood, usually, favorite, crowded"></textarea>
+  <label class="done"><input type="checkbox" data-step="1"> Ya elegí unidad, gramática y vocabulario</label>
+</section>
+
+<section class="step">
+  <div class="n">2</div>
+  <h2>Elige un tema que tenga que ver contigo</h2>
+  <p>Tu presentación debe tratar de <b>tu propio contexto</b>. Escoge uno y mira un ejemplo de qué poner en cada diapositiva. Son frases modelo en inglés: cámbialas para que sean ciertas sobre ti y adáptalas a tu gramática.</p>
+  <div class="tabs" id="tabs"></div>
+  <div id="slides"></div>
+  <label class="done"><input type="checkbox" data-step="2"> Ya elegí mi tema y mis 4 o 5 diapositivas</label>
+</section>
+
+<section class="step">
+  <div class="n">3</div>
+  <h2>Prepara el texto (puedes usar IA)</h2>
+  <p>Está permitido usar IA. Estas opciones tienen versión gratuita:</p>
+  <div class="tools">
+    <a href="https://claude.ai" target="_blank" rel="noopener">Claude<span>claude.ai</span></a>
+    <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT<span>chatgpt.com</span></a>
+    <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini<span>gemini.google.com</span></a>
+    <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">Copilot<span>copilot.microsoft.com</span></a>
+  </div>
+  <label for="info">Cuéntale a la IA datos reales sobre ti (en español o en inglés)</label>
+  <textarea id="info" placeholder="Ejemplo: me llamo Ana, vivo en Medellín con mi mamá y mi hermano, trabajo en una tienda de ropa…"></textarea>
+  <div class="prompt" id="prompt"></div>
+  <button class="btn" id="copy" type="button">Copiar instrucción</button>
+  <p>Antes de usar el texto, <b>léelo y corrígelo</b>. Debe ser verdadero sobre ti, sencillo para tu nivel y debe usar tu gramática y tu vocabulario. Si suena demasiado avanzado, pídele a la IA que lo simplifique.</p>
+  <label class="done"><input type="checkbox" data-step="3"> Mi texto es verdadero, sencillo y usa la unidad elegida</label>
+</section>
+
+<section class="step">
+  <div class="n">4</div>
+  <h2>Crea la presentación en Google Slides</h2>
+  <p><span class="emph">Usa solo Google Slides.</span> No se aceptan PowerPoint, Canva ni otros servicios.</p>
+  <p><a class="btn" href="https://slides.google.com" target="_blank" rel="noopener">Abrir Google Slides</a></p>
+  <ul>
+    <li><b>Máximo 5 diapositivas.</b></li>
+    <li>Pon <b>fotos reales tuyas</b> que muestren lo que dices (tu familia, tu trabajo, tu barrio, etc.). Súbelas con Insertar &gt; Imagen &gt; Subir desde el computador.</li>
+    <li>Cuida el <b>diseño</b>: no llenes la diapositiva solo de texto. Usa pocas frases, letra grande, buenos colores y una foto por diapositiva.</li>
+    <li>Ponle un título a cada diapositiva y un nombre a la presentación, por ejemplo: <i>Tarea 5 – tu nombre</i>.</li>
+  </ul>
+  <label class="done"><input type="checkbox" data-step="4"> Mi presentación tiene máximo 5 diapositivas, con fotos reales y diseño</label>
+</section>
+
+<section class="step">
+  <div class="n">5</div>
+  <h2>Comparte el enlace y entrégalo</h2>
+  <div class="warn"><b>Atención: el enlace debe ser público</b>Lo único que entregas es el enlace. Si tu profesor no puede abrirlo porque está restringido o pide permiso, la tarea se considerará <u>NO PRESENTADA</u>.</div>
+  <ul>
+    <li>En Google Slides, haz clic en <b>Compartir</b>.</li>
+    <li>En Acceso general, elige <span class="emph">Cualquier persona con el enlace</span> con permiso de <b>Lector</b> (o Comentador, si tu profesor lo prefiere).</li>
+    <li>Copia el enlace y entrégalo por el medio que tu profesor indique, antes del <b>18 de diciembre de 2026 a las 11:55 p. m.</b></li>
+    <li>Abre el enlace en una ventana privada para comprobar que funciona.</li>
+  </ul>
+  <label class="done"><input type="checkbox" data-step="5"> Mi enlace es público, lo probé en una ventana privada y lo entregué</label>
+</section>
+
+<section class="step" style="display:block">
+  <h2 style="margin-bottom:10px">Cómo se evalúa</h2>
+  <div class="scroll"><table>
+    <tr><th>Criterio</th><th>Qué se revisa</th></tr>
+    <tr><td>Gramática y vocabulario</td><td>La presentación usa las estructuras y el vocabulario de la unidad elegida (5 o 6).</td></tr>
+    <tr><td>Nivel de escritura</td><td>El texto refleja tu nivel real. No se espera un inglés demasiado avanzado.</td></tr>
+    <tr><td>Extensión</td><td>Máximo 5 diapositivas.</td></tr>
+    <tr><td>Diseño e imágenes</td><td>La presentación tiene diseño y fotos, no solo texto.</td></tr>
+    <tr><td><b>Acceso al enlace</b></td><td><b>El enlace debe estar compartido públicamente. Si no se puede abrir, la tarea se considera NO PRESENTADA.</b></td></tr>
+  </table></div>
+</section>
+<footer>Si tienes dudas, consulta a tu profesor antes de la fecha límite.</footer>
+</main>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var end=new Date("2026-12-19T04:55:00Z").getTime();
+  function tick(){var d=end-Date.now(),e=$("count");
+    if(d<=0){e.textContent="Plazo vencido";return}
+    e.textContent="Faltan "+Math.floor(d/864e5)+" d "+Math.floor(d%864e5/36e5)+" h "+Math.floor(d%36e5/6e4)+" min"}
+  tick();setInterval(tick,30000);
+
+  var DATA={
+    "Mi familia":{key:"my family",s:[
+      ["Hello! This is me","My name is … I’m … years old. I live in …","Foto: tú solo o tú con tu familia"],
+      ["My family","There are … people in my family. My mother/father/brother … is …","Foto: toda tu familia"],
+      ["What we do together","On weekends we usually … We like … because …","Foto: una actividad familiar"],
+      ["A special moment","Last … we … It was …","Foto: una fecha o celebración especial"],
+      ["Why my family is important","I love my family because …","Foto: un momento feliz juntos"]]},
+    "Mi trabajo":{key:"my job",s:[
+      ["Hello! This is me","I’m … I work as a … in/at …","Foto: tú en tu lugar de trabajo"],
+      ["My workday","I start work at … Every day I …","Foto: tú haciendo una tarea del día"],
+      ["My workplace","At work I use … There are … people in my team.","Foto: tu espacio, equipo o herramientas"],
+      ["What I like and what is difficult","I like … because … It’s difficult to …","Foto: un momento de tu trabajo"],
+      ["My future","In the future I want to …","Foto: algo que muestre tu meta"]]},
+    "Donde vivo":{key:"the place where I live",s:[
+      ["Hello! This is me","I’m … I live in … It’s a … place.","Foto: tú en tu barrio o ciudad"],
+      ["My neighborhood","There is a … near my house. There are many …","Foto: tu calle o tu barrio"],
+      ["What people do here","People here … You can …","Foto: personas o actividades del lugar"],
+      ["My favorite place","My favorite place is … because …","Foto: tú en tu lugar favorito"],
+      ["Come and visit!","You should visit … because …","Foto: el mejor paisaje o rincón"]]}
+  };
+  var cur="Mi familia";
+  function render(){
+    var tabs=$("tabs");tabs.innerHTML="";
+    Object.keys(DATA).forEach(function(k){
+      var b=document.createElement("button");b.type="button";b.textContent=k;
+      b.setAttribute("aria-pressed",k===cur);
+      b.onclick=function(){cur=k;render();build()};tabs.appendChild(b)});
+    $("slides").innerHTML=DATA[cur].s.map(function(s,i){
+      return '<div class="slide"><h3>Diapositiva '+(i+1)+': '+s[0]+'</h3><q>'+s[1]+'</q><small>'+s[2]+'</small></div>'}).join("")+
+      '<p style="font-size:.9rem;color:var(--muted)">Con 4 diapositivas, puedes unir dos de las anteriores.</p>';
+  }
+  function build(){
+    var u=document.querySelector('input[name=unit]:checked').value;
+    var g=$("gram").value.trim().split(/\n+/).filter(Boolean).join("; ")||"[grammar from Unit "+u+"]";
+    var v=$("vocab").value.trim()||"[vocabulary from Unit "+u+"]";
+    var i=$("info").value.trim()||"[my real information]";
+    $("prompt").textContent="I’m an English learner (beginner/elementary level). Help me write the text for a Google Slides presentation of 5 slides about "+DATA[cur].key+
+      ". Here is my real information: "+i+
+      "\nUse these grammar structures: "+g+". Use this vocabulary: "+v+
+      ".\nFor each slide give a short title and 2 to 3 simple sentences in the first person. Keep the English easy and natural, not too advanced. Also suggest which real photo of me I could use on each slide.";
+  }
+  ["gram","vocab","info"].forEach(function(x){$(x).addEventListener("input",build)});
+  document.querySelectorAll("input[name=unit]").forEach(function(r){r.addEventListener("change",build)});
+  render();build();
+  $("copy").addEventListener("click",function(){
+    var b=this;
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText($("prompt").textContent).then(function(){
+      b.textContent="¡Copiado!";setTimeout(function(){b.textContent="Copiar instrucción"},1800)},function(){})}
+  });
+  var boxes=document.querySelectorAll("input[data-step]");
+  boxes.forEach(function(b){b.addEventListener("change",function(){
+    var n=0;boxes.forEach(function(x){if(x.checked)n++});
+    $("barfill").style.width=(n/boxes.length*100)+"%";
+    $("ptext").textContent=n+" de "+boxes.length+" pasos completados"})});
+})();
+</script>
+</body>
+</html>
